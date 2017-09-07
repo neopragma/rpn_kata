@@ -34,18 +34,22 @@ describe('RPNLogic', () => {
     expect(rpn.reduce([])).to.deep.equal([]);
   });
 
-  it('should determine that non-numbers and non-operators are invalid', () => {
-    expect(rpn.isValid('a')).to.equal(false);
-  });
+  describe('.isValid', () => {
 
-  it('should determine that a number is valid', () => {
-    expect(rpn.isValid(1)).to.equal(true);
-  });
-
-  it('should determine an operator is valid', () => {
-    [addOp].forEach(op => {
-      expect(rpn.isValid(op)).to.equal(true);
+    it('should determine that non-numbers and non-operators are invalid', () => {
+      expect(rpn.isValid('a')).to.equal(false);
     });
+
+    it('should determine that a number is valid', () => {
+      expect(rpn.isValid(1)).to.equal(true);
+    });
+
+    it('should determine an operator is valid', () => {
+      [addOp].forEach(op => {
+        expect(rpn.isValid(op)).to.equal(true);
+      });
+    });
+
   });
 
   xit('should not accept invalid characters in the array (only 0-9,+,/,*,-)', () => {
