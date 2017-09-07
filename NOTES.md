@@ -17,3 +17,6 @@ then extending that out to a service, and then a quick front-end.
   - let's allow numerics unless this seems to get hairy
   - yeah, I like regex, looks a bit "clever", but I'll leave it for now, use a
     a var name to express the intent
+  - hmm duplicate knowledge of operators between tests / class, let's
+    reduce that
+  - Yay, wacked the regex! :D going to use op consts, I like that better maybe

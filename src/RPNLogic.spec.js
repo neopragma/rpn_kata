@@ -1,6 +1,12 @@
 const expect = require('chai').expect;
 
+const addOp = '+';
+
 class RPNLogic {
+  constructor() {
+    this.validOps = [ addOp ];
+  }
+
   reduce(input) {
     if (!Array.isArray(input)) throw('input must be an array');
 
@@ -8,8 +14,7 @@ class RPNLogic {
   }
 
   isValid(input) {
-    let validOperator = /[+-/*]/;
-    return typeof(input) === 'number' || input.match(validOperator) !== null;
+    return typeof(input) === 'number' || this.validOps.includes(input);
   }
 }
 
@@ -29,8 +34,18 @@ describe('RPNLogic', () => {
     expect(rpn.reduce([])).to.deep.equal([]);
   });
 
-  it('should have a method to determine if an element in the array is valid', () => {
+  it('should determine that non-numbers and non-operators are invalid', () => {
     expect(rpn.isValid('a')).to.equal(false);
+  });
+
+  it('should determine that a number is valid', () => {
+    expect(rpn.isValid(1)).to.equal(true);
+  });
+
+  it('should determine an operator is valid', () => {
+    [addOp].forEach(op => {
+      expect(rpn.isValid(op)).to.equal(true);
+    });
   });
 
   xit('should not accept invalid characters in the array (only 0-9,+,/,*,-)', () => {
