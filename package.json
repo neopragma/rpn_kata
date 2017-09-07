@@ -1,0 +1,25 @@
+{
+  "name": "rpn_kata",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha src/**/*.spec.js",
+    "lint": "eslint src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/svetzal/rpn_kata.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/svetzal/rpn_kata/issues"
+  },
+  "homepage": "https://github.com/svetzal/rpn_kata#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "eslint": "^4.6.1",
+    "mocha": "^3.5.0"
+  }
+}

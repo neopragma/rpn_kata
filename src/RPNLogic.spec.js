@@ -1,7 +1,10 @@
 const expect = require('chai').expect;
 
-describe("Something", () => {
-  it("should have some test running infrastructure", () => {
-    expect(true).to.equal(true);
-  })
+class RPNLogic {
+}
+
+describe('RPNLogic', () => {
+  it('should exist', () => {
+    expect(RPNLogic).to.exist;
+  });
 });
