@@ -3,6 +3,9 @@
 I'm going to do this with JavaScript, starting with the basic RPN engine and
 then extending that out to a service, and then a quick front-end.
 
+I'm pressed for time, task started interspersed with getting ready to leave
+shared office, then drove out for a meeting and got back late.
+
 2017-09-07:
 
 - set up some base things, disappointed about not being able to reconcile
@@ -20,3 +23,15 @@ then extending that out to a service, and then a quick front-end.
   - hmm duplicate knowledge of operators between tests / class, let's
     reduce that
   - Yay, wacked the regex! :D going to use op consts, I like that better maybe
+
+- set up travis
+- added full input array validation
+
+2017-09-08:
+
+Full day at client site, then drive Toronto to Cornwall (4h) for Play 4 Agile
+North America.
+
+- refactored validation methods a bit for clarity
+- added to codeclimate account
+- added quick links for status images
