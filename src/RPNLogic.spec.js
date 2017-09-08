@@ -8,13 +8,19 @@ class RPNLogic {
   }
 
   reduce(input) {
-    if (!Array.isArray(input)) throw('input must be an array');
-
+    if (!Array.isArray(input))
+      throw('input must be an array');
+    if (!this.isArrayValid(input))
+      throw('input must contain all valid elements');
     return input;
   }
 
-  isValid(input) {
-    return typeof(input) === 'number' || this.validOps.includes(input);
+  isArrayValid(input) {
+    return input.reduce((stillValid, el) => stillValid && this.isElementValid(el), true);
+  }
+
+  isElementValid(element) {
+    return typeof(element) === 'number' || this.validOps.includes(element);
   }
 }
 
@@ -37,22 +43,22 @@ describe('RPNLogic', () => {
   describe('.isValid', () => {
 
     it('should determine that non-numbers and non-operators are invalid', () => {
-      expect(rpn.isValid('a')).to.equal(false);
+      expect(rpn.isElementValid('a')).to.equal(false);
     });
 
     it('should determine that a number is valid', () => {
-      expect(rpn.isValid(1)).to.equal(true);
+      expect(rpn.isElementValid(1)).to.equal(true);
     });
 
     it('should determine an operator is valid', () => {
       [addOp].forEach(op => {
-        expect(rpn.isValid(op)).to.equal(true);
+        expect(rpn.isElementValid(op)).to.equal(true);
       });
     });
 
   });
 
-  xit('should not accept invalid characters in the array (only 0-9,+,/,*,-)', () => {
+  it('should not accept invalid characters in the array (only 0-9,+,/,*,-)', () => {
     expect(() => rpn.reduce(['hello'])).to.throw();
   });
 
