@@ -50,6 +50,10 @@ describe('RPNLogic', () => {
       expect(() => rpn.reduce([1,'+'])).to.throw();
     });
 
+    it('should be able to add two numbers', () => {
+      expect(rpn.reduce([1, 2, addOp])).to.deep.equal([3]);
+    });
+
   });
 
 });

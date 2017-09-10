@@ -15,6 +15,11 @@ class RPNLogic {
         stack.push(el);
       } else {
         let {operandA, operandB} = this.retrieveOperandPair(stack);
+        switch (el) {
+          case addOp:
+            stack.push(operandA + operandB);
+            break;
+        }
       }
     });
 
