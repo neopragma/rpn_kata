@@ -35,3 +35,13 @@ North America.
 - refactored validation methods a bit for clarity
 - added to codeclimate account
 - added quick links for status images
+
+2017-09-09:
+
+Lost the whole day at P4ANA; just couldn't get the time away.
+
+OK I lied, had to get this one out of the way...
+
+- separated RPNLogic module from spec
+- Refactor: let's create a stack so we can do some work, and instead of
+  returning input (degenerate) let's copy onto the stack.
