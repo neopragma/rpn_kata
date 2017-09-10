@@ -54,6 +54,10 @@ describe('RPNLogic', () => {
       expect(rpn.reduce([1, 2, addOp])).to.deep.equal([3]);
     });
 
+    it('should be able to add a few numbers', () => {
+      expect(rpn.reduce([1,2,3,'+','+'])).to.deep.equal([6]);
+    });
+
   });
 
 });
