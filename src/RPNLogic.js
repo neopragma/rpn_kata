@@ -1,8 +1,18 @@
-const addOp = '+';
+class AddStrategy {
+  static get op() {
+    return '+';
+  }
+
+  calculate(operandA, operandB) {
+    return operandA + operandB;
+  }
+}
 
 class RPNLogic {
   constructor() {
-    this.validOps = [ addOp ];
+    this.opStrategies = {
+      [AddStrategy.op]: new AddStrategy()
+    };
   }
 
   reduce(input) {
@@ -15,11 +25,8 @@ class RPNLogic {
         stack.push(el);
       } else {
         let {operandA, operandB} = this.retrieveOperandPair(stack);
-        switch (el) {
-          case addOp:
-            stack.push(operandA + operandB);
-            break;
-        }
+        let opStrategy = this.opStrategies[el];
+        stack.push(opStrategy.calculate(operandA, operandB));
       }
     });
 
@@ -44,11 +51,11 @@ class RPNLogic {
   }
 
   isElementValid(element) {
-    return typeof(element) === 'number' || this.validOps.includes(element);
+    return typeof(element) === 'number' || Object.keys(this.opStrategies).includes(element);
   }
 }
 
 module.exports = {
   RPNLogic,
-  addOp
+  AddStrategy
 };

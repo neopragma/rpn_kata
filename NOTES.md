@@ -45,3 +45,6 @@ OK I lied, had to get this one out of the way...
 - separated RPNLogic module from spec
 - Refactor: let's create a stack so we can do some work, and instead of
   returning input (degenerate) let's copy onto the stack.
+- let's see about pulling a strategy class out of this...
+- into a Map() ? Nope, don't like iterators, let's use Object
+

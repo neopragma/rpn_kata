@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const { RPNLogic, addOp } = require('./RPNLogic');
+const { RPNLogic, AddStrategy } = require('./RPNLogic');
 
 describe('RPNLogic', () => {
 
@@ -20,8 +20,8 @@ describe('RPNLogic', () => {
     });
 
     it('should determine an operator is valid', () => {
-      [addOp].forEach(op => {
-        expect(rpn.isElementValid(op)).to.equal(true);
+      [AddStrategy].forEach(strategy => {
+        expect(rpn.isElementValid(strategy.op)).to.equal(true);
       });
     });
 
@@ -51,11 +51,11 @@ describe('RPNLogic', () => {
     });
 
     it('should be able to add two numbers', () => {
-      expect(rpn.reduce([1, 2, addOp])).to.deep.equal([3]);
+      expect(rpn.reduce([1, 2, AddStrategy.op])).to.deep.equal([3]);
     });
 
     it('should be able to add a few numbers', () => {
-      expect(rpn.reduce([1,2,3,'+','+'])).to.deep.equal([6]);
+      expect(rpn.reduce([1,2,3,AddStrategy.op,AddStrategy.op])).to.deep.equal([6]);
     });
 
   });
