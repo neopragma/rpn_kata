@@ -50,4 +50,6 @@ OK I lied, had to get this one out of the way...
 - do we like this Strategy thingie? ...
 - adding a subtract strategy exposed a bug in operand ordering, fixed that up
 - is assembling the strategies the concern of the RPNLogic?
+- pausing to catch up with folks at P4ANA
+
 
