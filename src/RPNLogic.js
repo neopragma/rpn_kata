@@ -8,10 +8,21 @@ class AddStrategy {
   }
 }
 
+class SubtractStrategy {
+  static get op() {
+    return '-';
+  }
+
+  calculate(operandA, operandB) {
+    return operandA - operandB;
+  }
+}
+
 class RPNLogic {
   constructor() {
     this.opStrategies = {
-      [AddStrategy.op]: new AddStrategy()
+      [AddStrategy.op]: new AddStrategy(),
+      [SubtractStrategy.op]: new SubtractStrategy()
     };
   }
 
@@ -21,22 +32,23 @@ class RPNLogic {
 
     let stack = [];
     input.forEach(el => {
-      if (typeof(el) === 'number') {
-        stack.push(el);
-      } else {
-        let {operandA, operandB} = this.retrieveOperandPair(stack);
-        let opStrategy = this.opStrategies[el];
-        stack.push(opStrategy.calculate(operandA, operandB));
-      }
+      if (typeof(el) === 'number') stack.push(el);
+      else this.executeStrategy(stack, el);
     });
 
     return stack;
   }
 
+  executeStrategy(stack, el) {
+    let {operandA, operandB} = this.retrieveOperandPair(stack);
+    let opStrategy = this.opStrategies[ el ];
+    stack.push(opStrategy.calculate(operandA, operandB));
+  }
+
   retrieveOperandPair(stack) {
     return {
-      operandA: this.retrieveOperand(stack),
-      operandB: this.retrieveOperand(stack)
+      operandB: this.retrieveOperand(stack),
+      operandA: this.retrieveOperand(stack)
     };
   }
 
@@ -57,5 +69,6 @@ class RPNLogic {
 
 module.exports = {
   RPNLogic,
-  AddStrategy
+  AddStrategy,
+  SubtractStrategy
 };

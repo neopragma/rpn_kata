@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const { RPNLogic, AddStrategy } = require('./RPNLogic');
+const { RPNLogic, AddStrategy, SubtractStrategy } = require('./RPNLogic');
 
 describe('RPNLogic', () => {
 
@@ -56,6 +56,10 @@ describe('RPNLogic', () => {
 
     it('should be able to add a few numbers', () => {
       expect(rpn.reduce([1,2,3,AddStrategy.op,AddStrategy.op])).to.deep.equal([6]);
+    });
+
+    it('should be able to subtract', () => {
+      expect(rpn.reduce([2, 1, SubtractStrategy.op])).to.deep.equal([1]);
     });
 
   });
