@@ -46,6 +46,10 @@ describe('RPNLogic', () => {
       expect(rpn.reduce(operandList)).to.deep.equal(operandList);
     });
 
+    it('should throw exception if only a single operand is available for an operator', () => {
+      expect(() => rpn.reduce([1,'+'])).to.throw();
+    });
+
   });
 
 });

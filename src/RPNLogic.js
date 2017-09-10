@@ -13,7 +13,14 @@ class RPNLogic {
 
     let stack = [];
     input.forEach(el => {
-      stack.push(el);
+      if (typeof(el) === 'number') {
+        stack.push(el);
+      } else {
+        let operandA = stack.pop();
+        let operandB = stack.pop();
+        if (typeof(operandA) === 'undefined' || typeof(operandB) === 'undefined')
+          throw(`not enough operands for operator ${el}`);
+      }
     });
 
     return stack;
