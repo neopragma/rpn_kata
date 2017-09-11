@@ -52,4 +52,14 @@ OK I lied, had to get this one out of the way...
 - is assembling the strategies the concern of the RPNLogic?
 - pausing to catch up with folks at P4ANA
 
+2017-09-10:
+
+P4ANA wrapup + travel, exhausted.
+
+2017-09-11:
+
+Happy Monday!
+
+
+
 

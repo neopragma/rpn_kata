@@ -27,6 +27,18 @@ describe('RPNLogic', () => {
 
   });
 
+  describe('.isArrayValid', () => {
+
+    it('should evaluate an empty array as valid', () => {
+      expect(rpn.isArrayValid([])).to.equal(true);
+    });
+
+    it('should be able to determine whether a whole array is valid', () => {
+      expect(rpn.isArrayValid([1, 2, 3, 4, 5, AddStrategy.op, SubtractStrategy.op])).to.equal(true);
+    });
+
+  });
+
   describe('.reduce', () => {
 
     it('should throw if the input is not an array', () => {
