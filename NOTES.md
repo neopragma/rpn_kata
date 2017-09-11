@@ -70,7 +70,7 @@ the full reduce function to it.
 ie.
 
 curl -X POST -d '[1,2,"+"]' -H 'accept: application/json' \
- -H 'content-type: application/json' https://localhost:3000/api/v1/reduce
+ -H 'content-type: application/json' http://localhost:3000/api/v1/reduce
 ==> [3]
 
 Hmm. Haven't used Express before :) seems simple enough...
@@ -78,4 +78,15 @@ Hmm. Haven't used Express before :) seems simple enough...
 - OK got it worked out, going to use the body-parser middleware to reduce work
 - Going to just commit the spike as it's only a couple files, I'll refactor
   the mess
+- Not gonna mock what I don't own, express wrapper is pretty paper thin anyways
+- pausing, apprentice needs help, he's all jazzed about serverless apps after
+  his last tech meetup... oh, youthful enthusiasm :P
 
+Hmm. What kind of front-end. Aurelia looks like it's getting stale. Let's use
+React, never did that before :) could get messy so going to spike this too.
+
+- oh cool, a controlled input will let me filter out non-numeric characters
+  from the numeric input
+- oi OK react will be a teeny bit hairy, but I think I have enough; going to
+  start this in a single component and see how it does; pausing for dinner and
+  to reflect
