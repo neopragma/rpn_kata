@@ -20,3 +20,9 @@ Run the unit tests with:
 ```
 npm test
 ```
+
+Start the server with:
+
+```
+npm start
+```
