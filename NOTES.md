@@ -60,6 +60,22 @@ P4ANA wrapup + travel, exhausted.
 
 Happy Monday!
 
+Let's see about putting a service in front of this. Let's say src/server.js
+runs Express and processes API calls. We'll use path versioning, and we'll
+use the base url /api
 
+I'd like to have a stateless API to start for simplicity, so we'll just bridge
+the full reduce function to it.
 
+ie.
+
+curl -X POST -d '[1,2,"+"]' -H 'accept: application/json' \
+ -H 'content-type: application/json' https://localhost:3000/api/v1/reduce
+==> [3]
+
+Hmm. Haven't used Express before :) seems simple enough...
+- Let's spike!
+- OK got it worked out, going to use the body-parser middleware to reduce work
+- Going to just commit the spike as it's only a couple files, I'll refactor
+  the mess
 
