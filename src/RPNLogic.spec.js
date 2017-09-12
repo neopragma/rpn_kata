@@ -1,12 +1,12 @@
 const expect = require('chai').expect;
-const { RPNLogic, AddStrategy, SubtractStrategy, MultiplyStrategy, DivideStrategy } = require('./RPNLogic');
+const { RPNLogic, AddStrategy, SubtractStrategy, MultiplyStrategy, DivideStrategy, standardCalculatorStrategies } = require('./RPNLogic');
 
 describe('RPNLogic', () => {
 
   let rpn;
 
   beforeEach(() => {
-    rpn = new RPNLogic();
+    rpn = new RPNLogic(standardCalculatorStrategies);
   });
 
   describe('.isElementValid', () => {

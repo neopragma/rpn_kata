@@ -1,9 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const { RPNLogic } = require('./src/RPNLogic');
+const { RPNLogic, standardCalculatorStrategies } = require('./src/RPNLogic');
 
-const rpn = new RPNLogic();
+const rpn = new RPNLogic(standardCalculatorStrategies);
 
 app.use(bodyParser.json());
 app.use('/', express.static('www'));

@@ -38,14 +38,16 @@ class DivideStrategy {
   }
 }
 
+const standardCalculatorStrategies = {
+  [AddStrategy.op]: new AddStrategy(),
+  [SubtractStrategy.op]: new SubtractStrategy(),
+  [MultiplyStrategy.op]: new MultiplyStrategy(),
+  [DivideStrategy.op]: new DivideStrategy()
+};
+
 class RPNLogic {
-  constructor() {
-    this.opStrategies = {
-      [AddStrategy.op]: new AddStrategy(),
-      [SubtractStrategy.op]: new SubtractStrategy(),
-      [MultiplyStrategy.op]: new MultiplyStrategy(),
-      [DivideStrategy.op]: new DivideStrategy()
-    };
+  constructor(strategies) {
+    this.opStrategies = strategies;
   }
 
   reduce(input) {
@@ -94,5 +96,6 @@ module.exports = {
   AddStrategy,
   SubtractStrategy,
   MultiplyStrategy,
-  DivideStrategy
+  DivideStrategy,
+  standardCalculatorStrategies
 };
