@@ -42,12 +42,17 @@ class Calculator extends React.Component {
   }
 
   userDidPressEnter() {
-    this.addToValues(this.state.input);
+    this.addToValues(parseFloat(this.state.input));
+    this.requestCalculation();
+  }
+
+  userDidPressOperator(op) {
+    this.addToValues(op);
     this.requestCalculation();
   }
 
   addToValues(value) {
-    this.state.values.push(parseFloat(value));
+    this.state.values.push(value);
     this.setState({values: this.state.values});
   }
 
@@ -61,7 +66,7 @@ class Calculator extends React.Component {
         <ul>
           {this.state.operations.map(op => {
             return <li>
-              <button>{op}</button>
+              <button onClick={() => this.userDidPressOperator(op)}>{op}</button>
             </li>;
           })}
         </ul>
