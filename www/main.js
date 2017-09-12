@@ -1,6 +1,26 @@
+class RPNGateway {
+  get headers() {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
+    return headers;
+  }
+
+  reduce(values) {
+    console.log(values);
+    return fetch('/api/v1/reduce', {
+      method: 'POST',
+      body: JSON.stringify(values),
+      headers: this.headers
+    })
+      .then(response => response.json());
+  }
+}
+
 class Calculator extends React.Component {
   constructor() {
     super();
+    this.gateway = new RPNGateway(); // Should be injected... (how?)
     this.state = {
       values: [ 1, 2, '+' ],
       operations: [ '+', '-' ],
@@ -17,15 +37,7 @@ class Calculator extends React.Component {
   }
 
   requestCalculation() {
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    headers.append('Accept', 'application/json');
-    fetch('/api/v1/reduce', {
-      method: 'POST',
-      body: JSON.stringify(this.state.values),
-      headers: headers
-    })
-      .then(response => response.json())
+    this.gateway.reduce(this.state.values)
       .then(data => this.setState({values: data}));
   }
 
@@ -48,7 +60,9 @@ class Calculator extends React.Component {
                onClick={() => this.userDidPressEnter()}></input>
         <ul>
           {this.state.operations.map(op => {
-            return <li><button>{ op }</button></li>
+            return <li>
+              <button>{op}</button>
+            </li>;
           })}
         </ul>
         <ol>
