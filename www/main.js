@@ -10,7 +10,8 @@ class Calculator extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({input: event.target.value});
+    let newValue = event.target.value.replace(/[^0-9\.]/g, '');
+    this.setState({input: newValue});
   }
 
   render() {
