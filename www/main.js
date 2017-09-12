@@ -42,13 +42,21 @@ class Calculator extends React.Component {
   }
 
   userDidPressEnter() {
-    this.addToValues(parseFloat(this.state.input));
+    let value = parseFloat(this.state.input);
+    if (!isNaN(value)) {
+      this.addToValues(parseFloat(this.state.input));
+    }
+    this.setState({input: ''});
     this.requestCalculation();
   }
 
   userDidPressOperator(op) {
     this.addToValues(op);
     this.requestCalculation();
+  }
+
+  userDidPressClear() {
+    this.setState({values: []});
   }
 
   addToValues(value) {
@@ -69,6 +77,7 @@ class Calculator extends React.Component {
               <button onClick={() => this.userDidPressOperator(op)}>{op}</button>
             </li>;
           })}
+          <li><button onClick={() => this.userDidPressClear()}>Clear</button></li>
         </ul>
         <ol>
           {this.state.values.map(v => <li>{v}</li>)}
