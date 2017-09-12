@@ -19,34 +19,22 @@ class RPNGateway {
   }
 }
 
+const initialState = {
+  error: false,
+  values: [],
+  operations: [ '+', '-', '*', '/' ], // Be nice if these came from the op
+                                      // strategies
+  input: ''
+};
+
 class Calculator extends React.Component {
   constructor() {
     super();
     this.gateway = new RPNGateway(); // Should be injected... (how?)
-    this.state = {
-      error: false,
-      values: [],
-      operations: [ '+', '-', '*', '/' ], // Be nice if these came from the op
-                                          // strategies
-      input: ''
-    };
+    this.state = initialState;
 
     // OMG this is ugly, React, really ugly. Or should I blame ESNext subclassing.
     this.inputDidChange = this.inputDidChange.bind(this);
-  }
-
-  inputDidChange(event) {
-    let newValue = event.target.value.replace(/[^0-9\.]/g, '');
-    this.setState({input: newValue});
-  }
-
-  requestCalculation() {
-    this.gateway.reduce(this.state.values)
-      .then(data => this.setState({
-        values: data,
-        error: false
-      }))
-      .catch(() => this.setState({error: true}));
   }
 
   userDidPressEnter() {
@@ -54,13 +42,6 @@ class Calculator extends React.Component {
     this.pushToValuesIfNumeric(this.state.input);
     this.setState({input: ''});
     this.requestCalculation();
-  }
-
-  pushToValuesIfNumeric(input) {
-    let value = parseFloat(input);
-    if (!isNaN(value)) {
-      this.addToValues(parseFloat(this.state.input));
-    }
   }
 
   userDidPressOperator(op) {
@@ -76,9 +57,30 @@ class Calculator extends React.Component {
     });
   }
 
+  pushToValuesIfNumeric(input) {
+    let value = parseFloat(input);
+    if (!isNaN(value)) {
+      this.addToValues(parseFloat(this.state.input));
+    }
+  }
+
   addToValues(value) {
     this.state.values.push(value);
     this.setState({values: this.state.values});
+  }
+
+  inputDidChange(event) {
+    let newValue = event.target.value.replace(/[^0-9\.]/g, '');
+    this.setState({input: newValue});
+  }
+
+  requestCalculation() {
+    this.gateway.reduce(this.state.values)
+      .then(data => this.setState({
+        values: data,
+        error: false
+      }))
+      .catch(() => this.setState({error: true}));
   }
 
   statusClass() {
