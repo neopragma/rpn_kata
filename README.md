@@ -11,6 +11,39 @@ I decided to implemented it with NodeJS and the Express server to serve both
 the API and the static front-end files, and used React to implement a simple
 Single-Page-App for the front-end.
 
+In terms of the build pipeline, I decided to refresh myself on travis-ci for
+the build and test-run, codeclimate for static analysis, and heroku still seems
+nice as a free path for proof-of-concept prototypes.
+
+- commit changes to github
+    - triggers travis-ci build (tests under Node 6 and 8)
+        - success triggers codeclimate
+        - success triggers heroku deployment
+
+I stopped short of UI testing, I tend to use a Chef-built X11 vfb / headless
+environment for browser testing, but it's a lot of overhead for this and doesn't
+fit the travis pipeline as-is. Unsure of possible open-source friendly test
+environments out there (but I didn't go looking, perhaps another day).
+
+## API
+
+There is a single API point at `/api/v1/reduce` that accepts a `POST` request
+containing a JSON encoded array that represents the stack of elements to
+process with the RPN algorithm.
+
+The only content-type accepted and responded with at this time is
+`application/json`.
+
+If the stack sent is invalid, an http status 400 will be returned, along with
+the original input data.
+
+Sample requests and responses:
+
+- `[]` -> `[]`
+- `[1,2]` -> `[1,2]`
+- `[1,2,"+"]` -> `[3]`
+- `[1,2,3,"+","+"]` -> `[4]`
+
 ## Setup
 
 Make sure you have Node >= 6 installed and on your path.
