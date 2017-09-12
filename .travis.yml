@@ -1,4 +1,8 @@
 language: node_js
 node_js:
-  - '6'
-  - '8'
+- '6'
+- '8'
+deploy:
+  provider: heroku
+  api_key:
+    secure: XhQ79gWJ75Ec/3RZDHdCvOYiAhYlFzLeeOSkDspSE9mh/1S1TkmWFGbZXo3rN7OmMBJJGoprYsTb3Rhg7tpPQqyXFGz7F9gMLpQaqRYSCUBSH4iXYEGnW0VqXK6u9I5lPCl39KoeSoCbk/qPtNnzM+Yj1S41AO4PHCmFf0GKhyy5FGqXeH+Q7fy0jE4W9wIIvuehbc3Zq0nTjKogzQLTSJ/nxAGqPDGBUGeHgZRKXErmiSFvnhp1eCghwmewTqxaQbqJjnE5w4NObmdPHVzsYhGrPYTWTh+FyeXqwNJRXbmykQXT8gJ9ZIWChLWGo4kBUhtMnwHRexfCBncagQ4a4ilZpppXf+9ScpL/Lkuo5gj5ZtiN+WKEaaFftMMRPwGQLBL8eZg6Yz/8IF0aXvmTj9uQLH+K2J74eKrbV+wQKAOfqRmoT4UC9lx1mnfkrGEJdIzMz/yCc14pb9asHJK9OV/DYogdNtyHAoX9IU+EorKYu1+jK06jcQf0itFOlb+sh2lyKHMnoRcuX9ORtM7eVDjhCKdhSv+sNB41D7/ftW42XB96HVtf/j3F3OHYYKpN1qvrjrnNoRayjL6y+E0ITxc8hqphEDzq1PCFanxEl9V2ONHZqFcmdaK5RX7WZns48MfTlmh8SmLh49nrNROEkEQkutfdSRmp02/WOoIBhd4=
