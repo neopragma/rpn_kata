@@ -2,6 +2,7 @@ class Calculator extends React.Component {
   constructor() {
     super();
     this.state = {
+      values: [ 1, 2, 3 ],
       input: ''
     };
 
@@ -19,6 +20,9 @@ class Calculator extends React.Component {
       <div>
         <input type="text" value={this.state.input}
                onChange={this.handleChange}></input>
+        <ol>
+          {this.state.values.map(v => <li>{v}</li>)}
+        </ol>
       </div>
     );
   }
