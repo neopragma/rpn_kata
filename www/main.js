@@ -51,12 +51,16 @@ class Calculator extends React.Component {
 
   userDidPressEnter() {
     if (this.state.error) return;
-    let value = parseFloat(this.state.input);
+    this.pushToValuesIfNumeric(this.state.input);
+    this.setState({input: ''});
+    this.requestCalculation();
+  }
+
+  pushToValuesIfNumeric(input) {
+    let value = parseFloat(input);
     if (!isNaN(value)) {
       this.addToValues(parseFloat(this.state.input));
     }
-    this.setState({input: ''});
-    this.requestCalculation();
   }
 
   userDidPressOperator(op) {
