@@ -1,6 +1,25 @@
 class Calculator extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      input: ''
+    };
+
+    // OMG this is ugly, React, really ugly.
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({input: event.target.value});
+  }
+
   render() {
-    return <h1>Hello!</h1>;
+    return (
+      <div>
+        <input type="text" value={this.state.input}
+               onChange={this.handleChange}></input>
+      </div>
+    );
   }
 }
 

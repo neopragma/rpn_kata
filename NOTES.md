@@ -90,3 +90,5 @@ React, never did that before :) could get messy so going to spike this too.
 - oi OK react will be a teeny bit hairy, but I think I have enough; going to
   start this in a single component and see how it does; pausing for dinner and
   to reflect
+
+- ok let's blow out a single component and see what this looks like
