@@ -35,7 +35,7 @@ class Calculator extends React.Component {
   }
 
   addToValues(value) {
-    this.state.values.push(value);
+    this.state.values.push(parseFloat(value));
     this.setState({values: this.state.values});
   }
 
