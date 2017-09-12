@@ -1,0 +1,9 @@
+ol {
+    list-style: none;
+    display: flex;
+    flex-direction: column-reverse;;
+}
+
+ol.error {
+    color: red;
+}

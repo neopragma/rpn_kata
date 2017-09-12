@@ -10,7 +10,13 @@ app.use('/', express.static('www'));
 
 app.post('/api/v1/reduce', (req, res) => {
   const input = req.body;
-  const output = rpn.reduce(input);
+  let output;
+  try {
+    output = rpn.reduce(input);
+  } catch(err) {
+    output = input;
+    res.status(400);
+  }
   res.send(output);
 });
 
