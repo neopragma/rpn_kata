@@ -31,7 +31,7 @@ class Calculator extends React.Component {
       input: ''
     };
 
-    // OMG this is ugly, React, really ugly.
+    // OMG this is ugly, React, really ugly. Or should I blame ESNext subclassing.
     this.inputDidChange = this.inputDidChange.bind(this);
   }
 

@@ -96,3 +96,15 @@ React, never did that before :) could get messy so going to spike this too.
 - ok that's good; weird, Heroku has come so far, I haven't used it in years
 - it may not be the best deploy environment, but it'll do for demo...
 
+TODO:
+
+- wouldn't mind creating a 3rd common area for op strategies to be shared by
+  client and server
+- there seem to be some clear interaction mechanics that could be extracted
+  from the React component into a plain JS class to be tested independently
+- Splitting the React component model apart would be a great way to explore
+  inter-component dynamics within the React system (ie. stack display, input,
+  operator buttons)
+- module loading gets awkward fast, but didn't want to take the extra time to
+  put in webpack, that's probably next in order to have a real module loader
+  to connect the parts of the system
