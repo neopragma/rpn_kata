@@ -92,3 +92,5 @@ React, never did that before :) could get messy so going to spike this too.
   to reflect
 
 - ok let's blow out a single component and see what this looks like
+- pausing on refinement realizing haven't completed CD stage of pipeline
+

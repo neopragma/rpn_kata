@@ -13,7 +13,10 @@ class RPNGateway {
       body: JSON.stringify(values),
       headers: this.headers
     })
-      .then(response => response.json());
+      .then(response => {
+        if (response.status === 400) throw('Invalid input.');
+        return response.json();
+      });
   }
 }
 
@@ -22,7 +25,8 @@ class Calculator extends React.Component {
     super();
     this.gateway = new RPNGateway(); // Should be injected... (how?)
     this.state = {
-      values: [ 1, 2, '+' ],
+      error: false,
+      values: [],
       operations: [ '+', '-' ],
       input: ''
     };
@@ -38,10 +42,12 @@ class Calculator extends React.Component {
 
   requestCalculation() {
     this.gateway.reduce(this.state.values)
-      .then(data => this.setState({values: data}));
+      .then(data => this.setState({values: data, error: false}))
+      .catch(() => this.setState({error: true}));
   }
 
   userDidPressEnter() {
+    if (this.state.error) return;
     let value = parseFloat(this.state.input);
     if (!isNaN(value)) {
       this.addToValues(parseFloat(this.state.input));
@@ -51,17 +57,23 @@ class Calculator extends React.Component {
   }
 
   userDidPressOperator(op) {
+    if (this.state.error) return;
+    console.log(this.state.error);
     this.addToValues(op);
     this.requestCalculation();
   }
 
   userDidPressClear() {
-    this.setState({values: []});
+    this.setState({values: [], error: false});
   }
 
   addToValues(value) {
     this.state.values.push(value);
     this.setState({values: this.state.values});
+  }
+
+  statusClass() {
+    return this.state.error ? 'error':'';
   }
 
   render() {
@@ -79,7 +91,7 @@ class Calculator extends React.Component {
           })}
           <li><button onClick={() => this.userDidPressClear()}>Clear</button></li>
         </ul>
-        <ol>
+        <ol className={this.statusClass()}>
           {this.state.values.map(v => <li>{v}</li>)}
         </ol>
       </div>
