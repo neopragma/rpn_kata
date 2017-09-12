@@ -26,7 +26,8 @@ class Calculator extends React.Component {
     this.state = {
       error: false,
       values: [],
-      operations: [ '+', '-', '*', '/' ], // Be nice if these came from the op strategies
+      operations: [ '+', '-', '*', '/' ], // Be nice if these came from the op
+                                          // strategies
       input: ''
     };
 
@@ -41,7 +42,10 @@ class Calculator extends React.Component {
 
   requestCalculation() {
     this.gateway.reduce(this.state.values)
-      .then(data => this.setState({values: data, error: false}))
+      .then(data => this.setState({
+        values: data,
+        error: false
+      }))
       .catch(() => this.setState({error: true}));
   }
 
@@ -62,7 +66,10 @@ class Calculator extends React.Component {
   }
 
   userDidPressClear() {
-    this.setState({values: [], error: false});
+    this.setState({
+      values: [],
+      error: false
+    });
   }
 
   addToValues(value) {
@@ -71,28 +78,35 @@ class Calculator extends React.Component {
   }
 
   statusClass() {
-    return this.state.error ? 'error':'';
+    return this.state.error ? 'error' : '';
   }
 
   render() {
     return (
-      <div>
-        <input type="text" value={this.state.input}
-               onChange={this.inputDidChange}></input>
-        <input type="submit" value="Enter"
-               onClick={() => this.userDidPressEnter()}></input>
+      <section className="calculator">
+          <ol className={this.statusClass()}>
+            {this.state.values.map(v => <li>{v}</li>)}
+          </ol>
+        <section className="input">
+          <input type="text" value={this.state.input}
+                 placeholder="Click to enter number"
+                 onChange={this.inputDidChange}></input>
+          <button
+            onClick={() => this.userDidPressEnter()}>Enter
+          </button>
+        </section>
         <ul>
           {this.state.operations.map(op => {
             return <li>
-              <button onClick={() => this.userDidPressOperator(op)}>{op}</button>
+              <button
+                onClick={() => this.userDidPressOperator(op)}>{op}</button>
             </li>;
           })}
-          <li><button onClick={() => this.userDidPressClear()}>Clear</button></li>
+          <li>
+            <button onClick={() => this.userDidPressClear()}>Clear</button>
+          </li>
         </ul>
-        <ol className={this.statusClass()}>
-          {this.state.values.map(v => <li>{v}</li>)}
-        </ol>
-      </div>
+      </section>
     );
   }
 }
