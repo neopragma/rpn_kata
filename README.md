@@ -7,6 +7,10 @@ This was a fun little coding exercise meant to practice setting up a CI and CD
 pipeline for a web service and front-end web app that implements an RPN
 calculator.
 
+I decided to implemented it with NodeJS and the Express server to serve both
+the API and the static front-end files, and used React to implement a simple
+Single-Page-App for the front-end.
+
 ## Setup
 
 Make sure you have Node >= 6 installed and on your path.
