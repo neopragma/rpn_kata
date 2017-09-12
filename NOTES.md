@@ -93,4 +93,6 @@ React, never did that before :) could get messy so going to spike this too.
 
 - ok let's blow out a single component and see what this looks like
 - pausing on refinement realizing haven't completed CD stage of pipeline
+- ok that's good; weird, Heroku has come so far, I haven't used it in years
+- it may not be the best deploy environment, but it'll do for demo...
 

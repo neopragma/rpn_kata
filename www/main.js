@@ -7,7 +7,6 @@ class RPNGateway {
   }
 
   reduce(values) {
-    console.log(values);
     return fetch('/api/v1/reduce', {
       method: 'POST',
       body: JSON.stringify(values),
@@ -58,7 +57,6 @@ class Calculator extends React.Component {
 
   userDidPressOperator(op) {
     if (this.state.error) return;
-    console.log(this.state.error);
     this.addToValues(op);
     this.requestCalculation();
   }
