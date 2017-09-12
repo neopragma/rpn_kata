@@ -30,7 +30,13 @@ class Calculator extends React.Component {
   }
 
   userDidPressEnter() {
+    this.addToValues(this.state.input);
     this.requestCalculation();
+  }
+
+  addToValues(value) {
+    this.state.values.push(value);
+    this.setState({values: this.state.values});
   }
 
   render() {
