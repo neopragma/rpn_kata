@@ -1,8 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=VT323');
 
 body,li,button,input {
-    font-family: VT323, Courier;
+    font-family: VT323, Courier, monospace;
     font-size: 18pt;
+}
+
+title,script {
+    display: none;
 }
 
 * {
