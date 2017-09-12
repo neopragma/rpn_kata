@@ -3,8 +3,8 @@ class AddStrategy {
     return '+';
   }
 
-  calculate(operandA, operandB) {
-    return operandA + operandB;
+  calculate(a, b) {
+    return a + b;
   }
 }
 
@@ -13,8 +13,28 @@ class SubtractStrategy {
     return '-';
   }
 
-  calculate(operandA, operandB) {
-    return operandA - operandB;
+  calculate(a, b) {
+    return a - b;
+  }
+}
+
+class MultiplyStrategy {
+  static get op() {
+    return '*';
+  }
+
+  calculate(a, b) {
+    return a * b;
+  }
+}
+
+class DivideStrategy {
+  static get op() {
+    return '/';
+  }
+
+  calculate(a, b) {
+    return a / b;
   }
 }
 
@@ -22,7 +42,9 @@ class RPNLogic {
   constructor() {
     this.opStrategies = {
       [AddStrategy.op]: new AddStrategy(),
-      [SubtractStrategy.op]: new SubtractStrategy()
+      [SubtractStrategy.op]: new SubtractStrategy(),
+      [MultiplyStrategy.op]: new MultiplyStrategy(),
+      [DivideStrategy.op]: new DivideStrategy()
     };
   }
 
@@ -70,5 +92,7 @@ class RPNLogic {
 module.exports = {
   RPNLogic,
   AddStrategy,
-  SubtractStrategy
+  SubtractStrategy,
+  MultiplyStrategy,
+  DivideStrategy
 };

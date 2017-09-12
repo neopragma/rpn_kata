@@ -26,7 +26,7 @@ class Calculator extends React.Component {
     this.state = {
       error: false,
       values: [],
-      operations: [ '+', '-' ],
+      operations: [ '+', '-', '*', '/' ], // Be nice if these came from the op strategies
       input: ''
     };
 
