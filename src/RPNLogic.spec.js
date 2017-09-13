@@ -41,12 +41,16 @@ describe('RPNLogic', () => {
 
   describe('.reduce', () => {
 
+    function expect_rpn_result(check) {
+      expect(rpn.reduce(check.input)).to.deep.equal(check.expected);
+    }
+
     it('should throw if the input is not an array', () => {
       expect(() => rpn.reduce()).to.throw();
     });
 
     it('should return an empty array if input is empty', () => {
-      expect(rpn.reduce([])).to.deep.equal([]);
+      expect_rpn_result({ input: [], expected: [] });
     });
 
     it('should not accept invalid characters in the array (only 0-9,+,/,*,-)', () => {
@@ -55,7 +59,7 @@ describe('RPNLogic', () => {
 
     it('should not be able to reduce if only operands', () => {
       const operandList = [1,2,3];
-      expect(rpn.reduce(operandList)).to.deep.equal(operandList);
+      expect_rpn_result({ input: operandList, expected: operandList });
     });
 
     it('should throw exception if only a single operand is available for an operator', () => {
@@ -63,23 +67,23 @@ describe('RPNLogic', () => {
     });
 
     it('should be able to add two numbers', () => {
-      expect(rpn.reduce([1, 2, AddStrategy.op])).to.deep.equal([3]);
+      expect_rpn_result({ input: [1, 2, AddStrategy.op], expected: [3] });
     });
 
     it('should be able to add a few numbers', () => {
-      expect(rpn.reduce([1,2,3,AddStrategy.op,AddStrategy.op])).to.deep.equal([6]);
+      expect_rpn_result({ input: [1,2,3,AddStrategy.op,AddStrategy.op], expected: [6] });
     });
 
     it('should be able to subtract', () => {
-      expect(rpn.reduce([2, 1, SubtractStrategy.op])).to.deep.equal([1]);
+      expect_rpn_result({ input: [2, 1, SubtractStrategy.op], expected: [1] });
     });
 
     it('should be able to multiply', () => {
-      expect(rpn.reduce([2, 2, MultiplyStrategy.op])).to.deep.equal([4]);
+      expect_rpn_result({ input: [2, 2, MultiplyStrategy.op], expected: [4] });
     });
 
     it('should be able to divide', () => {
-      expect(rpn.reduce([8, 2, DivideStrategy.op])).to.deep.equal([4]);
+      expect_rpn_result({ input: [8, 2, DivideStrategy.op], expected: [4] });
     });
 
   });

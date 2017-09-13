@@ -1,23 +1,5 @@
-class RPNGateway {
-  get headers() {
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    headers.append('Accept', 'application/json');
-    return headers;
-  }
-
-  reduce(values) {
-    return fetch('/api/v1/reduce', {
-      method: 'POST',
-      body: JSON.stringify(values),
-      headers: this.headers
-    })
-      .then(response => {
-        if (response.status === 400) throw('Invalid input.');
-        return response.json();
-      });
-  }
-}
+import RPNGateway from 'RPNGateway';
+// const RPNGateway = require('RPNGateway');
 
 const initialState = {
   error: false,
@@ -95,7 +77,7 @@ class Calculator extends React.Component {
           </ol>
         <section className="input">
           <input type="text" value={this.state.input}
-                 placeholder="Click to enter number"
+                 placeholder="Click to type a number"
                  onChange={this.inputDidChange}></input>
           <button
             onClick={() => this.userDidPressEnter()}>Enter
