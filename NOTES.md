@@ -108,3 +108,5 @@ TODO:
 - module loading gets awkward fast, but didn't want to take the extra time to
   put in webpack, that's probably next in order to have a real module loader
   to connect the parts of the system
+  
+Triggering a build...
